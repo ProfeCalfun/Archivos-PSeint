@@ -1,0 +1,83 @@
+Proceso Restaurante_ElProfe
+	
+	Definir pa_n, pa_a, ca_n, ca_a, sa_n, sa_a, ni,ad Como Entero;
+	Definir op, plat, i,n,t_neto,prop,op_t, acum Como Entero;
+	pa_n=7000;
+	pa_a=9000;
+	ca_n=7000;
+	ca_a=9000;
+	sa_n=9000;
+	sa_a=11000;
+	
+	t_neto=0;
+	acum=1;
+	//inicio
+	Escribir "                  Bienvenidos a el restaurante El Profe";
+	Escribir "   a continuacion se desplegará sus opciones para realizar su pedido";
+	Escribir "------------------------------------------------------------------------";
+
+	//menu
+	Escribir " Tipo de entradas";Escribir Sin Saltar "                           Tarifas";Escribir "";
+	Escribir "(1) Pollo con arroz";Escribir Sin Saltar "                  Niños $7000     Adultos $9000";
+	Escribir "(2) Carne con arroz";Escribir Sin Saltar "                  Niños $7000     Adultos $9000";
+	Escribir "(3) Salmón con agregado";Escribir Sin Saltar "              Niños $9000     Adultos $11000";
+	Escribir "________________________________________________________________________";
+	//
+	Escribir "";
+	Escribir "¿Cuantos platillos desea?";
+	Leer n;
+	Escribir "- - - - - - - - - - - - -";
+	Para i<-1 Hasta n Con Paso 1 Hacer
+		Escribir "¿Cuál de las entradas le gustaria agregar? ",acum;
+		Leer plat;
+		Escribir "¿con tarifa en (1) Niño o (2) Adulto?";
+		Leer op_t;
+		Escribir "_________________________________________";
+		//op1
+		Si plat=1 y op_t=1 Entonces
+			t_neto=t_neto+pa_n;
+		SiNo
+			si plat=1 y op_t=2 entonces
+				t_neto=t_neto+pa_a;
+			FinSi
+		FinSi
+		acum=acum+1;
+		//op2
+		Si plat=2 y op_t=1 Entonces
+			t_neto=t_neto+ca_n;
+		SiNo
+			si plat=2 y op_t=2 entonces
+				t_neto=t_neto+ca_a;
+			FinSi
+		FinSi
+		//op3
+		Si plat=3 y op_t=1 Entonces
+			t_neto=t_neto+sa_n;
+		SiNo
+			si plat=3 y op_t=2 entonces
+				t_neto=t_neto+sa_a;
+			FinSi
+		FinSi
+	FinPara
+	
+	//boleta
+	Escribir "";
+	Escribir "¿desea agregar propina del 10%?";Escribir "(1) si "," (2) no";
+	Leer op;
+	Si op=1 Entonces
+		Escribir "    Restaurante El Profe";
+		Escribir "    boleta electrónica";
+		Escribir "    Total neto: ", t_neto;
+		Escribir "    Propina sugerida: 10%";
+		prop=t_neto*0.10;
+		Escribir "    Total a pagar: ", prop+t_neto;
+	SiNo
+		Escribir "    Restaurante El Profe";
+		Escribir "    boleta electrónica";
+		Escribir "    Total neto: ", t_neto;
+		Escribir "    Total a pagar: ", t_neto;
+	FinSi
+	Escribir "";
+	
+
+FinProceso
